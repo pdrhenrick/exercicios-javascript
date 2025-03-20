@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação Campeonato Brasileiro 2024</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr.zona-classificacao {
+            background-color: #4CAF50; /* Verde para Zona de Classificação */
+        }
+
+        tr.zona-intermediaria {
+            background-color: #FFEB3B; /* Amarelo para Zona Intermediária */
+        }
+
+        tr.zona-rebaixamento {
+            background-color: #F44336; /* Vermelho para Zona de Rebaixamento */
+        }
+
+        .highlight {
+            background-color: #ADD8E6; /* Azul claro para destaque */
+        }
+    </style>
+</head>
+<body>
+    <h1>Classificação Campeonato Brasileiro 2024</h1>
+
+    <!-- Botões para alterar a cor das linhas -->
+    <button onclick="alterarCorLinha()">Alterar Cor Linha 1</button>
+    <button onclick="alterarCorLinhaPorId('linha-flamengo')">Alterar Cor Linha Flamengo</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Imagem</th>
+                <th>Posição</th>
+                <th>Time</th>
+                <th>Pontos</th>
+                <th>Qtd. Jogos</th>
+                <th>Qtd. Vitórias</th>
+                <th>Qtd. Derrotas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="zona-classificacao" id="linha-corinthians" onmouseover="mudarCor(this, true)" onmouseout="mudarCor(this, false)" onclick="capturarNome(this)">
+                <td><img src="https://logodetimes.com/times/corinthians/logo-corinthians-2048.png" alt="Corinthians" width="30" height="30"></td>
+                <td>1</td>
+                <td><a href="https://www.corinthians.com.br" target="_blank">Corinthians</a></td>
+                <td>80</td>
+                <td>10</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr class="zona-classificacao" id="linha-botafogo" onmouseover="mudarCor(this, true)" onmouseout="mudarCor(this, false)" onclick="capturarNome(this)">
+                <td><img src="https://logodetimes.com/times/botafogo/logo-botafogo-2048.png" alt="Botafogo" width="30" height="30"></td>
+                <td>2</td>
+                <td><a href="https://www.botafogo.com.br" target="_blank">Botafogo</a></td>
+                <td>79</td>
+                <td>10</td>
+                <td>9</td>
+                <td>1</td>
+            </tr>
+            <tr class="zona-classificacao" id="linha-sao-paulo" onmouseover="mudarCor(this, true)" onmouseout="mudarCor(this, false)" onclick="capturarNome(this)">
+                <td><img src="https://logodetimes.com/times/sao-paulo/logo-sao-paulo-2048.png" alt="São Paulo" width="30" height="30"></td>
+                <td>3</td>
+                <td><a href="https://www.saopaulofc.net" target="_blank">São Paulo</a></td>
+                <td>75</td>
+                <td>10</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr id="linha-flamengo" class="zona-intermediaria" onmouseover="mudarCor(this, true)" onmouseout="mudarCor(this, false)" onclick="capturarNome(this)">
+                <td><img src="https://logodetimes.com/times/flamengo/logo-flamengo-4096.png" alt="Flamengo" width="30" height="30"></td>
+                <td>4</td>
+                <td><a href="https://www.flamengo.com.br" target="_blank">Flamengo</a></td>
+                <td>70</td>
+                <td>10</td>
+                <td>7</td>
+                <td>3</td>
+            </tr>
+            <tr class="zona-rebaixamento" onmouseover="mudarCor(this, true)" onmouseout="mudarCor(this, false)" onclick="capturarNome(this)">
+                <td><img src="https://logodetimes.com/times/santos/logo-santos-1536.png" alt="Santos" width="30" height="30"></td>
+                <td>5</td>
+                <td><a href="https://www.santosfc.com.br" target="_blank">Santos</a></td>
+                <td>72</td>
+                <td>10</td>
+                <td>7</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Função para alterar a cor da linha 1
+        function alterarCorLinha() {
+            const linha = document.getElementById('linha-corinthians'); // A linha do Corinthians
+            linha.style.backgroundColor = '#ADD8E6'; // Cor azul claro para destacar
+        }
+
+        // Função para alterar a cor da linha com ID específico (passado como parâmetro)
+        function alterarCorLinhaPorId(id) {
+            const linha = document.getElementById(id);
+            linha.style.backgroundColor = '#ADD8E6'; // Cor azul claro para destacar
+        }
+
+        // Função para mudar a cor da linha quando o mouse passa por cima
+        function mudarCor(linha, isMouseOver) {
+            if (isMouseOver) {
+                linha.style.backgroundColor = '#ADD8E6'; // Azul claro quando o mouse está sobre a linha
+            } else {
+                linha.style.backgroundColor = ''; // Volta à cor original quando o mouse sai
+            }
+        }
+
+        // Função para capturar o nome do time e exibir em um alert e no console
+        function capturarNome(linha) {
+            var nomeTime = linha.cells[2].innerHTML; // Captura o nome do time da terceira célula (índice 2)
+            console.log("Time selecionado: " + nomeTime); // Exibe no console
+            alert("Time selecionado: " + nomeTime); // Exibe um alerta
+        }
+    </script>
+</body>
+</html>
